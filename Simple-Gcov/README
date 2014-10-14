@@ -1,0 +1,13 @@
+%make clean
+rm -f *.o *.d *.exe simple *.gcov *.gcno *.gcda
+%make
+cc -MD -Wall -O0 -fprofile-arcs -ftest-coverage -g   -c simple.c
+simple.c: In function 'main':
+simple.c:8: warning: 'x' is used uninitialized in this function
+cc  -Wall -O0 -fprofile-arcs -ftest-coverage -g   -o simple simple.o
+%./simple
+FALSE
+%gcov simple.c
+File 'simple.c'
+Lines executed:80.00% of 5
+simple.c:creating 'simple.c.gcov'
